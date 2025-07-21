@@ -1,0 +1,106 @@
+.row {
+  color: #fff;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 25px 20px;
+  position: relative;
+}
+
+/* Container for poster row + buttons */
+.row-controls {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Horizontal scroll container */
+.rowPosters {
+  display: flex;
+  padding: 10px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 10px;
+  flex: 1;
+}
+
+.rowPosters::-webkit-scrollbar {
+  display: none;
+}
+
+/* Poster style */
+.poster {
+  max-height: 300px;
+  max-width: 270px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.poster:hover {
+  transform: scale(1.05);
+}
+
+/* Skeleton loading effect */
+.row-loading {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.poster.skeleton {
+  width: 270px;
+  height: 300px;
+  background-color: #333;
+  border-radius: 5px;
+  animation: pulse 1s infinite ease-in-out;
+}
+
+/* Animation for loading placeholder */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Scroll buttons */
+.row-controls button {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s ease;
+  border-radius: 50%;
+}
+
+.row-controls button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Optional: fix button size/alignment for mobile */
+@media screen and (max-width: 768px) {
+  .poster {
+    max-width: 200px;
+    max-height: 250px;
+  }
+
+  .poster.skeleton {
+    width: 200px;
+    height: 250px;
+  }
+
+  .row-controls button {
+    font-size: 1.5rem;
+    padding: 8px 12px;
+  }
+}
