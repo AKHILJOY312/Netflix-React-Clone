@@ -11,12 +11,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const isLoggedIn = login(email, password);
-    if (isLoggedIn) {
+    setError("");
+
+    try {
+      await login(email, password);
       navigate("/");
-    } else {
+    } catch (err) {
       setError("Invalid email or password");
     }
   };
