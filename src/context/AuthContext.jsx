@@ -1,11 +1,10 @@
-// AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
 import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { auth } from "../config/firebase"; // update the path if needed
+import { auth } from "../config/firebase";
 
 export const AuthContext = createContext();
 
@@ -24,9 +23,9 @@ export const AuthProvider = ({ children }) => {
       const res = await signInWithEmailAndPassword(auth, email, password);
       setCurrentUser(res.user);
       return res.user;
-    } catch (err) {
-      console.error("Login error:", err.code, err.message);
-      throw err;
+    } catch (error) {
+      console.error("Login error:", error.code);
+      throw new Error("Invalid email or password");
     }
   };
 
